@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách các trang web tình yêu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f8e1e1, #ffffff); /* Nền sáng với màu hồng nhạt */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff6f61, #ff9a9e); /* Màu hồng đậm */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 111, 97, 0.5); /* Đổ bóng hồng cho header */
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            flex: 1;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .note {
+            background-color: #ffe0f0; /* Màu hồng nhạt cho ghi chú */
+            border-left: 5px solid #ff6f61; /* Đường viền màu hồng đậm */
+            color: #d81b60; /* Màu chữ hồng đậm */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(255, 111, 97, 0.3); /* Đổ bóng hồng cho ghi chú */
+            grid-column: 1 / -1; /* Span across all columns */
+        }
+
+        .link-block {
+            background: #ffffff; /* Nền trắng cho các khối liên kết */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(255, 111, 97, 0.2); /* Đổ bóng hồng cho khối liên kết */
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .link-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(255, 111, 97, 0.4); /* Đổ bóng hồng khi hover */
+        }
+
+        .link-block h2 {
+            color: #d81b60; /* Màu tiêu đề hồng đậm */
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px solid #ff9a9e; /* Đường viền dưới màu hồng nhạt */
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .link-block p {
+            font-size: 0.95em;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .link-block a {
+            display: inline-block;
+            background-color: #ff6f61; /* Nền nút màu hồng đậm */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .link-block a:hover {
+            background-color: #ff4f3d; /* Màu nền khi hover */
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: #333;
+            color: white;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DANH SÁCH TRÁI TIM CỦA ANH</h1>
+    </header>
+
+    <div class="container">
+        <div class="note">
+            <p><strong>Lưu ý:</strong> CÓ GÌ SAI SÓT EM BỎ QUA NHA</p>
+        </div>
+
+        <div class="link-block">
+            <h2>💖 Trái Tim Đơn Giản Mà Xịn</h2>
+            <p>Mô tả: Hiệu ứng trái tim cơ bản, nhìn là yêu liền!</p>
+            <a href="/love/love-add.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>📝 Trái Tim Có Chữ Cute</h2>
+            <p>Mô tả: Trái tim xuất hiện cùng lời nhắn siêu ngọt!</p>
+            <a href="/love/love-add2.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>🫶 Click Là Tim Bay Tung Tóe</h2>
+            <p>Mô tả: Nhấp chuột phát là tim bay loạn xạ luôn!</p>
+            <a href="/love/love-add3.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>🌸 Trái Tim Anh Thích Nhất</h2>
+            <p>Mô tả: Trái tim nổi bật trên nền hồng siêu mộng mơ.</p>
+            <a href="/love/love.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>✨ Tim Nhấp Nháy Chớp Chớp</h2>
+            <p>Mô tả: Trái tim nhấp nháy, nhìn là muốn yêu luôn!</p>
+            <a href="/love/love2.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>💌 "I LOVE YOU" Bay Lượn</h2>
+            <p>Mô tả: Chữ "I LOVE YOU" trôi nổi khắp màn hình, lãng mạn chưa nè!</p>
+            <a href="/love/love3.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>👾 "I LOVE U" Rơi Như Hacker</h2>
+            <p>Mô tả: Chữ "I LOVE U" rơi xuống như mưa code, chất lừ!</p>
+            <a href="/love/love4.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>💗 Trái Tim 3D Siêu Lung Linh</h2>
+            <p>Mô tả: Trái tim 3D cùng chữ xinh xắn, nhìn là mê!</p>
+            <a href="/love/love5.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>❤️ Tim Đỏ Nhấp Nháy Đáng Yêu</h2>
+            <p>Mô tả: Trái tim đỏ nhấp nháy, cute hết nấc!</p>
+            <a href="/love/love6.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>🌠 Mưa Sao Băng Lấp Lánh</h2>
+            <p>Mô tả: Hiệu ứng mưa sao băng, lãng mạn như phim Hàn!</p>
+            <a href="/love/流星雨.html">Xem ngay</a>
+        </div>
+
+        <div class="link-block">
+            <h2>🌌 Bầu Trời Sao Xoay Lung Linh</h2>
+            <p>Mô tả: Sao xoay tròn, lung linh như tình mình luôn á!</p>
+            <a href="/love/星空特效.html">Xem ngay</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; PHAM VAN DUNG</p>
+    </footer>
+
+</body>
+</html>
