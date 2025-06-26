@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Hiệu ứng bầu trời sao xoay</title>
+    <title> MY LOVE</title>
     <style>
         /* CSS cho nút quay lại */
         .back-btn {
             display: inline-block;
             padding: 10px 15px;
-            background-color: #ff7e5f;
+            background-color: #f35ead;
             color: white;
             text-decoration: none;
             border-radius: 25px;
@@ -155,6 +155,16 @@
             window.requestAnimationFrame(animation);
         }
         animation();
+    </script>
+    <audio id="audio" autoplay loop>
+        <source src="/asset/audio/nhacnen2.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        // Tự động phát lại nếu bị dừng (một số trình duyệt cần thao tác người dùng)
+        const audio = document.getElementById('audio');
+        document.body.addEventListener('click', function () {
+            if (audio.paused) audio.play();
+        });
     </script>
 </body>
 

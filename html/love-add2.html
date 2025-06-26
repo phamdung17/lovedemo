@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> 爱心代码 </title>
+    <title>  MY LOVE </title>
     <meta charset="utf-8">
     <meta name="Keywords" content="爱心代码，程序员表白">
     <meta name="Description" content="爱心代码，HTML文件，程序员何未来GitHub爱心代码项目">
@@ -50,7 +50,7 @@
         .back-btn {
             display: inline-block;
             padding: 10px 15px;
-            background-color: #ff7e5f;
+            background-color: #f35ead;
             color: white;
             text-decoration: none;
             border-radius: 25px;
@@ -90,7 +90,7 @@
     <button class="back-btn" onclick="window.history.back()">Quay lại</button>
     <canvas id="pinkboard"></canvas>
 
-    <div class="title">THÙY VẪN ĐẸP GÁI</div>
+    <div class="title">My Love</div>
     <script>
 
         var settings = {
@@ -315,6 +315,16 @@
                 render();
             }, 10);
         })(document.getElementById('pinkboard'));
+    </script>
+    <audio id="audio" autoplay loop>
+        <source src="/asset/audio/nhacnen2.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        // Tự động phát lại nếu bị dừng (một số trình duyệt cần thao tác người dùng)
+        const audio = document.getElementById('audio');
+        document.body.addEventListener('click', function () {
+            if (audio.paused) audio.play();
+        });
     </script>
 
 

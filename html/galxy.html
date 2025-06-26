@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trái Tim Trong Dải Ngân Hà</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: black;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #f35ead;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0;
+            z-index: 9999;
+        }
+        .back-btn:hover {
+            background-color: #feb47b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .back-btn:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.history.back()">← Quay lại</button>
+    <!-- Three.js -->
+    <script src="/asset/css/js/three.min.js"></script>
+    <!-- Controls -->
+    <script src="/asset/css/js/TrackballControls.js"></script>
+    <!-- GSAP cho animation -->
+    <script src="/asset/css/js/gsap.min.js"></script>
+    <!-- Simplex Noise -->
+    <script src="/asset/css/js/simplex-noise.js"></script>
+    <script src="/asset/css/js/script.js"></script>
+    <audio id="audio" autoplay loop>
+        <source src="/asset/audio/nhacnen2.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        // Tự động phát lại nếu bị dừng (một số trình duyệt cần thao tác người dùng)
+        const audio = document.getElementById('audio');
+        document.body.addEventListener('click', function () {
+            if (audio.paused) audio.play();
+        });
+    </script>
+</body>
+</html>

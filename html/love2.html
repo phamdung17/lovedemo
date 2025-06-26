@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--    github.com/he-weilai/love-code  -->
-    <title>点击屏幕爱心效果</title>
+    <title> MY LOVE</title>
     <style>
         div {
             width: 400px;
@@ -24,7 +24,7 @@
         .back-btn {
             display: inline-block;
             padding: 10px 15px;
-            background-color: #ff7e5f;
+            background-color: #f35ead;
             color: white;
             text-decoration: none;
             border-radius: 25px;
@@ -61,7 +61,7 @@
 
 <body>
     <button class="back-btn" onclick="window.history.back()">Quay lại</button>
-    <div>Nhấn đúp chuột đi Thùy Thùy</div>
+    <div>Nhấn đúp chuột đi sẽ có điều bất ngờ</div>
 
     <script type="text/javascript">
         ! function (e, t, a) {
@@ -117,6 +117,16 @@
                 ), n(), r()
         }(window, document);
 
+    </script>
+    <audio id="audio" autoplay loop>
+        <source src="/asset/audio/nhacnen2.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        // Tự động phát lại nếu bị dừng (một số trình duyệt cần thao tác người dùng)
+        const audio = document.getElementById('audio');
+        document.body.addEventListener('click', function () {
+            if (audio.paused) audio.play();
+        });
     </script>
 
 </body>

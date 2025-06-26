@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title> Heart </title>
+  <title>  MY LOVE </title>
   <meta charset="UTF-8">
   <meta name="Keywords" content="">
   <meta name="Description" content="">
@@ -20,7 +20,7 @@
     .back-btn {
       display: inline-block;
       padding: 10px 15px;
-      background-color: #ff7e5f;
+      background-color: #f35ead;
       color: white;
       text-decoration: none;
       border-radius: 25px;
@@ -205,6 +205,16 @@
     if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
     else document.addEventListener('DOMContentLoaded', init, false);
   </script>
+  <audio id="audio" autoplay loop>
+        <source src="/asset/audio/nhacnen2.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        // Tự động phát lại nếu bị dừng (một số trình duyệt cần thao tác người dùng)
+        const audio = document.getElementById('audio');
+        document.body.addEventListener('click', function () {
+            if (audio.paused) audio.play();
+        });
+    </script>
 
 </body>
 

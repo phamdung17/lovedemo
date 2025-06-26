@@ -124,7 +124,7 @@
         .back-btn {
             display: inline-block;
             padding: 10px 15px;
-            background-color: #ff7e5f;
+            background-color: #f35ead;
             color: white;
             text-decoration: none;
             border-radius: 25px;
@@ -172,6 +172,16 @@
             <div class="star" style="top: 200px; left: 1000px; animation-delay: 1s;"></div>
         </div>
     </div>
+    <audio id="audio" autoplay loop>
+        <source src="/asset/audio/nhacnen2.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        // Tự động phát lại nếu bị dừng (một số trình duyệt cần thao tác người dùng)
+        const audio = document.getElementById('audio');
+        document.body.addEventListener('click', function () {
+            if (audio.paused) audio.play();
+        });
+    </script>
 </body>
 
 </html>
