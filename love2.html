@@ -56,47 +56,12 @@
             content: "←";
             margin-right: 8px;
         }
-
-        .heart-wave {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100vw;
-            height: 50vh;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        .heart {
-            position: absolute;
-            bottom: 0;
-            font-size: 24px;
-            animation: waveMove 6s linear infinite;
-            color: #fa38af;
-            opacity: 0.8;
-        }
-
-        @keyframes waveMove {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-30px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
     </style>
 </head>
 
 <body>
     <button class="back-btn" onclick="window.history.back()">Quay lại</button>
     <div>Nhấn đúp chuột đi sẽ có điều bất ngờ</div>
-    <div class="heart-wave" id="heartWave"></div>
 
     <script type="text/javascript">
         ! function (e, t, a) {
@@ -162,20 +127,6 @@
         document.body.addEventListener('click', function () {
             if (audio.paused) audio.play();
         });
-    </script>
-    <script>
-        // Hiệu ứng trái tim lượn sóng 1 lớp
-        const waveContainer = document.getElementById("heartWave");
-        const numHearts = 30;
-        for (let i = 0; i < numHearts; i++) {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.textContent = "💗";
-            heart.style.left = `${(i / numHearts) * 100}vw`;
-            heart.style.animationDelay = `${(i % 10) * 0.2}s`;
-            heart.style.fontSize = `${18 + Math.random() * 18}px`;
-            waveContainer.appendChild(heart);
-        }
     </script>
 
 </body>
