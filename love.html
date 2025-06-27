@@ -243,55 +243,82 @@
     </audio>
 
     <script>
+        // Canvas & hiệu ứng nền
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const hearts = [];
-        const sparkles = [];
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 6000);
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-        function createSparkle() {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            sparkle.style.left = Math.random() * canvas.width + 'px';
-            sparkle.style.top = Math.random() * canvas.height + 'px';
-            document.body.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 3000);
-        }
-
-        setInterval(createHeart, 300);
-        setInterval(createSparkle, 500);
-
-
+        // Vẽ nền sao (tối ưu: chỉ vẽ lại khi resize hoặc khi cần)
         function drawStars() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             for (let i = 0; i < 100; i++) {
                 const x = Math.random() * canvas.width;
                 const y = Math.random() * canvas.height;
                 const size = Math.random() * 2;
-
                 ctx.beginPath();
                 ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fillStyle = "#fff";
+                ctx.globalAlpha = 0.7 + Math.random() * 0.3;
                 ctx.fill();
             }
+            ctx.globalAlpha = 1;
         }
+        drawStars();
+        window.addEventListener('resize', drawStars);
 
-        setInterval(drawStars, 100);
+        // Hiệu ứng trái tim rơi (tối ưu: dùng requestAnimationFrame)
+        const heartSymbols = ['💖', '❤️', '💕', '💗', '💓','💟','🩷','💞','🌸'];
+        function createFallingHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('falling-heart');
+            heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+            heart.style.fontSize = (16 + Math.random() * 24) + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createFallingHeart, 300);
 
+        // CSS cho trái tim rơi
+        const style = document.createElement('style');
+        style.innerHTML = `
+        .falling-heart {
+          position: fixed;
+          top: -50px;
+          color: #ff69b4;
+          animation: fall linear forwards;
+          font-size: 20px;
+          z-index: 9999;
+          user-select: none;
+          pointer-events: none;
+        }
+        @keyframes fall {
+          0% { transform: translateY(0) rotate(0deg); opacity: 1;}
+          100% { transform: translateY(100vh) rotate(360deg); opacity: 0;}
+        }
+        `;
+        document.head.appendChild(style);
+
+        // Hiệu ứng lấp lánh (sparkle) tối ưu
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+        setInterval(createSparkle, 600);
+
+        // Lời bài hát (lyrics) tối ưu
         const audioElement = document.getElementById('audio');
         const lyricsElement = document.getElementById('lyrics');
-
         const lyricsArray = [
             { time: 0, text: "Chẳng một ai như anh biết rõ gu nhạc em thích" },
             { time: 3, text: "Tịch tình tang" },
@@ -313,36 +340,33 @@
             { time: 49, text: "Rồi một mình ôm niềm thích thú" },
             { time: 51.5, text: "Suốt bao ngày dài" },
         ];
-
         let currentLyricIndex = 0;
-
         function displayLyric() {
             const currentTime = audioElement.currentTime;
-        
             if (
                 currentLyricIndex < lyricsArray.length &&
                 currentTime >= lyricsArray[currentLyricIndex].time
             ) {
                 lyricsElement.textContent = lyricsArray[currentLyricIndex].text;
                 lyricsElement.classList.add('show');
-        
                 setTimeout(() => {
                     lyricsElement.classList.remove('show');
-                }, 4000);
-        
+                }, 3500);
                 currentLyricIndex++;
             }
-        
             requestAnimationFrame(displayLyric);
         }
-        
-
         audioElement.addEventListener('play', () => {
-            currentLyricIndex = 0; 
+            currentLyricIndex = 0;
             displayLyric();
         });
 
-        // Lấy ảnh từ localStorage nếu có, ưu tiên ảnh người dùng upload
+        // Tối ưu phát nhạc tự động
+        document.body.addEventListener('click', function () {
+            if (audioElement.paused) audioElement.play();
+        });
+
+        // Load ảnh nhanh hơn (ưu tiên ảnh người dùng upload)
         const imgNguoiYeu = document.getElementById('imgNguoiYeu');
         const anhNguoiYeu = localStorage.getItem('anhNguoiYeu');
         if (anhNguoiYeu) {
