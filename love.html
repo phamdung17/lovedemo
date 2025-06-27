@@ -233,7 +233,7 @@
     <canvas id="canvas"></canvas>
     <div class="content">
         <h1>To My Love</h1>
-        <img src="./em.jpg" alt="Your Love">
+        <img id="imgNguoiYeu" src="./gaune.jpg" alt="Your Love">
         <p>Bé yêu của Anh ❤️</p>
         <div class="lyrics" id="lyrics">Loading lyrics...</div>
     </div>
@@ -341,6 +341,13 @@
             currentLyricIndex = 0; 
             displayLyric();
         });
+
+        // Lấy ảnh từ localStorage nếu có, ưu tiên ảnh người dùng upload
+        const imgNguoiYeu = document.getElementById('imgNguoiYeu');
+        const anhNguoiYeu = localStorage.getItem('anhNguoiYeu');
+        if (anhNguoiYeu) {
+            imgNguoiYeu.src = anhNguoiYeu;
+        }
     </script>
 </body>
 </html>

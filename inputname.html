@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập tên dễ thương</title>
+    <style>
+        body {
+            background: #fff0f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding-top: 80px;
+        }
+        #input-name {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid #f584b7;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 18px;
+            border-radius: 8px;
+            background: #f584b7;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            margin-left: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #ea4c89;
+        }
+        h4 {
+            color: #f584b7;
+            font-size: 2em;
+            margin-top: 40px;
+            min-height: 1.5em;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #f35ead;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0;
+            z-index: 9999;
+        }
+        .back-btn:hover {
+            background-color: #feb47b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .back-btn:active {
+            transform: translateY(1px);
+        }
+        .back-btn::before {
+            content: "←";
+            margin-right: 8px;
+        }
+
+        /* Hiệu ứng trái tim sóng dưới màn hình */
+        .heart-wave {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100vw;
+          height: 70vh; /* Tăng chiều cao sóng */
+          overflow: hidden;
+          pointer-events: none;
+          z-index: 999;
+        }
+
+        .heart {
+          position: absolute;
+          bottom: 0;
+          font-size: 24px;
+          animation: waveMove 6s linear infinite;
+          color: hotpink;
+          opacity: 0.8;
+        }
+
+        .heart.layer2 {
+          color: #ffb6d5;
+          opacity: 0.6;
+          animation: waveMove2 8s linear infinite;
+        }
+
+        .heart.layer3 {
+          color: #ffd6ec;
+          opacity: 0.4;
+          animation: waveMove3 10s linear infinite;
+        }
+
+        @keyframes waveMove {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-30px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        @keyframes waveMove2 {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-60px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        @keyframes waveMove3 {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-90px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        .falling-heart {
+          position: fixed;
+          top: -50px;
+          color: red;
+          animation: fall linear infinite;
+          font-size: 20px;
+          z-index: 9999;
+          user-select: none;
+          pointer-events: none;
+        }
+        @keyframes fall {
+          0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+          }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.history.back()">Quay lại</button>
+    <div id="input-name">
+        <input type="text" id="nameInput" placeholder="Nhập tên của bạn...">
+        <button onclick="setNameAndGo()">Hiển thị tên</button>
+    </div>
+    <h4 id="showName"></h4>
+
+    <div class="heart-wave" id="heartWave"></div>
+
+    <script>
+      // Hiệu ứng trái tim sóng nhiều lớp dưới màn hình
+      const waveContainer = document.getElementById("heartWave");
+      const numHearts = 30;
+
+      // Lớp 1
+      for (let i = 0; i < numHearts; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "💗";
+        heart.style.left = `${(i / numHearts) * 100}vw`;
+        heart.style.animationDelay = `${(i % 10) * 0.2}s`;
+        heart.style.fontSize = `${18 + Math.random() * 18}px`;
+        waveContainer.appendChild(heart);
+      }
+      // Lớp 2
+      for (let i = 0; i < numHearts; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart", "layer2");
+        heart.textContent = "💗";
+        heart.style.left = `${(i / numHearts) * 100}vw`;
+        heart.style.animationDelay = `${(i % 10) * 0.3 + 0.5}s`;
+        heart.style.fontSize = `${14 + Math.random() * 14}px`;
+        waveContainer.appendChild(heart);
+      }
+      // Lớp 3
+      for (let i = 0; i < numHearts; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart", "layer3");
+        heart.textContent = "💗";
+        heart.style.left = `${(i / numHearts) * 100}vw`;
+        heart.style.animationDelay = `${(i % 10) * 0.4 + 1}s`;
+        heart.style.fontSize = `${10 + Math.random() * 10}px`;
+        waveContainer.appendChild(heart);
+      }
+
+      // Hàm chuyển trang, truyền vào tên file muốn chuyển đến
+      function setNameAndGo(nextPage = 'love4.html') {
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('next')) nextPage = params.get('next');
+          var name = document.getElementById('nameInput').value.trim();
+          if (name) {
+              localStorage.setItem('tenNguoiYeu', name);
+              window.location.href = nextPage;
+          }
+      }
+
+      // Trái tim rơi ngẫu nhiên
+      const heartSymbols = ['💖', '❤️', '💕', '💗', '💓','💟','🩷','💞','🌸'];
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('falling-heart');
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        heart.style.fontSize = (16 + Math.random() * 24) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 300);
+    </script>
+</body>
+</html>
